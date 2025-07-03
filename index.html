@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>מעבדת הפרומפטים המהפכנית | GENSPARK & LANCHI</title>
+    <title>מעבדת הפרומפטים - GENSPARK & LANCHI</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -26,326 +26,211 @@
         }
 
         body {
-            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 50%, var(--accent) 100%);
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
             min-height: 100vh;
-            overflow-x: hidden;
-            scroll-behavior: smooth;
         }
 
-        /* === FIX: עיצוב קריא לתיבות קלט ותיבות בחירה === */
-        .input-field {
-            background-color: rgba(0, 0, 0, 0.2) !important;
-            backdrop-filter: blur(5px);
-            color: white;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-        }
-        .input-field::placeholder {
-            color: rgba(255, 255, 255, 0.5);
-        }
-        datalist option {
-            background-color: white;
-            color: black;
-        }
-        /* ================================================ */
-
-        /* גלקסיה מתנועעת ברקע */
-        .galaxy-bg {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-            opacity: 0.1;
-        }
-
-        .star {
-            position: absolute;
-            background: white;
-            border-radius: 50%;
-            animation: twinkle 3s infinite ease-in-out;
-        }
-
-        @keyframes twinkle {
-            0%, 100% { opacity: 0.3; transform: scale(0.8); }
-            50% { opacity: 1; transform: scale(1.2); }
-        }
-
-        /* אנימציות מתקדמות */
-        .morphing-card {
-            background: linear-gradient(145deg, rgba(255,255,255,0.1), rgba(255,255,255,0.05));
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(255,255,255,0.2);
-            border-radius: 24px;
-            transition: all 0.6s cubic-bezier(0.23, 1, 0.320, 1);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .morphing-card:hover {
-            transform: translateY(-20px) scale(1.02);
-            box-shadow: 0 40px 80px rgba(0,0,0,0.3);
-            border-color: rgba(255,255,255,0.4);
-        }
-
-        .morphing-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(135deg, transparent, rgba(255,255,255,0.1), transparent);
-            transform: translateX(-100%);
-            transition: transform 0.8s ease;
-        }
-
-        .morphing-card:hover::before {
-            transform: translateX(100%);
-        }
-
-        /* כפתורים הולוגרפיים */
-        .holo-button {
-            background: linear-gradient(145deg, var(--primary), var(--secondary));
-            border: none;
-            border-radius: 16px;
-            padding: 16px 32px;
-            color: white;
-            font-weight: 700;
-            cursor: pointer;
-            position: relative;
-            overflow: hidden;
-            transition: all 0.4s ease;
-            box-shadow: 0 8px 32px rgba(102, 126, 234, 0.4);
-        }
-
-        .holo-button:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 16px 48px rgba(102, 126, 234, 0.6);
-        }
-
-        .holo-button::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(45deg, transparent 30%, rgba(255,255,255,0.3) 50%, transparent 70%);
-            transform: translateX(-100%);
-            transition: transform 0.6s ease;
-        }
-
-        .holo-button:hover::after {
-            transform: translateX(100%);
-        }
-
-        /* AI עין פועמת */
-        .ai-eye {
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            background: radial-gradient(circle, var(--info) 0%, var(--primary) 50%, var(--dark) 100%);
-            position: relative;
-            animation: pulse-glow 2s infinite ease-in-out;
-            box-shadow: 0 0 30px var(--info);
-        }
-
-        .ai-eye::before {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 20px;
-            height: 20px;
-            background: white;
-            border-radius: 50%;
-            animation: scan 3s infinite linear;
-        }
-
-        @keyframes pulse-glow {
-            0%, 100% { box-shadow: 0 0 30px var(--info); }
-            50% { box-shadow: 0 0 60px var(--info), 0 0 90px var(--primary); }
-        }
-
-        @keyframes scan {
-            0% { transform: translate(-50%, -50%) scale(0.8); }
-            50% { transform: translate(-50%, -50%) scale(1.2); }
-            100% { transform: translate(-50%, -50%) scale(0.8); }
-        }
-
-        /* התקדמות חכמה */
-        .smart-progress {
-            height: 8px;
-            background: rgba(255,255,255,0.2);
-            border-radius: 4px;
-            overflow: hidden;
-            position: relative;
-        }
-
-        .smart-progress-bar {
-            height: 100%;
-            background: linear-gradient(90deg, var(--success), var(--info), var(--primary));
-            border-radius: 4px;
-            transition: width 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-            position: relative;
-        }
-
-        .smart-progress-bar::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
-            animation: progress-shine 2s infinite ease-in-out;
-        }
-
-        @keyframes progress-shine {
-            0% { transform: translateX(-100%); }
-            100% { transform: translateX(100%); }
-        }
-
-        /* גרפים מתקדמים */
-        .chart-container {
-            height: 300px;
-            position: relative;
-            background: rgba(255,255,255,0.05);
-            border-radius: 16px;
-            padding: 20px;
+        .glass-card {
+            background: rgba(255, 255, 255, 0.1);
             backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 16px;
+            transition: all 0.3s ease;
         }
 
-        /* הולוגרמה */
-        .hologram {
-            background: linear-gradient(45deg, rgba(102, 126, 234, 0.1), rgba(118, 75, 162, 0.1), rgba(240, 147, 251, 0.1));
-            border: 1px solid rgba(255,255,255,0.2);
-            border-radius: 20px;
-            backdrop-filter: blur(20px);
-            position: relative;
+        .glass-card:hover {
+            background: rgba(255, 255, 255, 0.15);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border: none;
+            border-radius: 12px;
+            padding: 12px 24px;
+            color: white;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 16px rgba(102, 126, 234, 0.4);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(102, 126, 234, 0.6);
+        }
+
+        .input-field {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 8px;
+            padding: 12px;
+            color: white;
+            width: 100%;
+            transition: all 0.3s ease;
+        }
+
+        .input-field:focus {
+            background: rgba(255, 255, 255, 0.15);
+            border-color: var(--primary);
+            outline: none;
+        }
+
+        .input-field::placeholder {
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .progress-bar {
+            height: 6px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 3px;
             overflow: hidden;
         }
 
-        /* הודעות */
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--success), var(--info));
+            border-radius: 3px;
+            transition: width 0.5s ease;
+        }
+
         .notification {
             position: fixed;
             top: 20px;
             right: 20px;
             min-width: 300px;
-            padding: 16px 20px;
-            border-radius: 12px;
+            padding: 16px;
+            border-radius: 8px;
             color: white;
             font-weight: 600;
             z-index: 1000;
             transform: translateX(400px);
-            transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+            transition: transform 0.3s ease;
         }
 
         .notification.show {
             transform: translateX(0);
         }
 
-        .notification.success { background: linear-gradient(135deg, var(--success), #059669); }
-        .notification.warning { background: linear-gradient(135deg, var(--warning), #d97706); }
-        .notification.error { background: linear-gradient(135deg, var(--error), #dc2626); }
-        .notification.info { background: linear-gradient(135deg, var(--info), #2563eb); }
-        
-        /* משתנים דינמיים */
-        .dynamic-bg {
-            background: linear-gradient(135deg, 
-                hsl(var(--hue, 240), 70%, 60%) 0%, 
-                hsl(calc(var(--hue, 240) + 30), 70%, 50%) 50%, 
-                hsl(calc(var(--hue, 240) + 60), 70%, 65%) 100%);
-            transition: all 1s ease;
+        .notification.success {
+            background: var(--success);
+        }
+
+        .notification.warning {
+            background: var(--warning);
+        }
+
+        .notification.error {
+            background: var(--error);
+        }
+
+        .notification.info {
+            background: var(--info);
+        }
+
+        .instruction-box {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            padding: 12px;
+            margin-bottom: 16px;
+            font-size: 0.9rem;
+        }
+
+        .instruction-text {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 0.85rem;
+            margin-bottom: 8px;
+        }
+
+        .chart-container {
+            height: 300px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            padding: 16px;
+        }
+
+        @media (max-width: 768px) {
+            .glass-card {
+                margin: 8px;
+            }
+            
+            .btn-primary {
+                padding: 10px 20px;
+                font-size: 14px;
+            }
+            
+            .chart-container {
+                height: 200px;
+                padding: 8px;
+            }
+        }
+
+        @media print {
+            body {
+                background: white !important;
+            }
+            
+            .glass-card {
+                background: #f8f9fa !important;
+                border: 1px solid #dee2e6 !important;
+            }
+            
+            .btn-primary {
+                background: #667eea !important;
+            }
+            
+            .notification {
+                display: none !important;
+            }
         }
     </style>
 </head>
-<body class="dynamic-bg">
-    <!-- גלקסיה ברקע -->
-    <div class="galaxy-bg" id="galaxy"></div>
-
-    <!-- ניווט מתקדם -->
-    <nav class="fixed top-0 left-0 right-0 z-50 p-4">
-        <div class="morphing-card p-4">
-            <div class="flex justify-between items-center">
-                <div class="flex items-center space-x-4 space-x-reverse">
-                    <img src="https://cdn1.genspark.ai/user-upload-image/22_generated/3c1fc5ac-8855-4c3d-a9d0-a082d92e013d" alt="LANCHI Logo" class="w-12 h-12 rounded-full">
-                    <div>
-                        <h1 class="text-white font-bold text-lg">מעבדת הפרומפטים המהפכנית</h1>
-                        <p class="text-white/70 text-sm">GENSPARK × LANCHI</p>
-                    </div>
-                </div>
-                
-                <div class="flex items-center space-x-4 space-x-reverse">
-                    <div class="ai-eye"></div>
+<body>
+    <!-- כותרת ראשית -->
+    <header class="py-16 text-center">
+        <div class="container mx-auto px-4">
+            <div class="flex items-center justify-center mb-8">
+                <img src="https://cdn1.genspark.ai/user-upload-image/22_generated/3c1fc5ac-8855-4c3d-a9d0-a082d92e013d" alt="LANCHI Logo" class="w-16 h-16 rounded-full ml-4">
+                <div>
+                    <h1 class="text-4xl font-black text-white">מעבדת הפרומפטים</h1>
+                    <p class="text-white/80 text-lg">GENSPARK × LANCHI</p>
                 </div>
             </div>
-        </div>
-    </nav>
-
-    <!-- כותרת ראשית -->
-    <header class="pt-32 pb-16 text-center">
-        <div class="container mx-auto px-4">
-            <h1 class="text-6xl font-black text-white mb-6">
-                🚀 המעבדה המתקדמת ביותר בעולם
-            </h1>
-            <h2 class="text-3xl font-bold text-white/90 mb-8">
-                AI חכם • ניתוח מתקדם • יכולות פורצות דרך
-            </h2>
-            <p class="text-xl text-white/80 max-w-4xl mx-auto leading-relaxed">
-                ברוכים הבאים לעתיד של יצירת פרומפטים. המעבדה שלנו משלבת בינה מלאכותית מתקדמת, 
-                ניתוח רב-שכבתי ולמידה אדפטיבית כדי להביא לכם את הכלי החכם ביותר שיש.
+            <p class="text-lg text-white/90 max-w-3xl mx-auto leading-relaxed">
+                כלים מקצועיים ליצירת פרומפטים איכותיים עם בינה מלאכותית מתקדמת
             </p>
         </div>
     </header>
 
-    <!-- סטטיסטיקות בזמן אמת -->
-    <section class="mb-16">
-        <div class="container mx-auto px-4">
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
-                <div class="morphing-card p-4 text-center">
-                    <div class="text-3xl font-black text-white mb-2" id="promptsGenerated">1,247</div>
-                    <div class="text-white/80 text-sm">פרומפטים נוצרו היום</div>
-                </div>
-                <div class="morphing-card p-4 text-center">
-                    <div class="text-3xl font-black text-white mb-2" id="successRate">97.3%</div>
-                    <div class="text-white/80 text-sm">שיעור הצלחה AI</div>
-                </div>
-                <div class="morphing-card p-4 text-center">
-                    <div class="text-3xl font-black text-white mb-2" id="activeUsers">892</div>
-                    <div class="text-white/80 text-sm">משתמשים פעילים</div>
-                </div>
-                <div class="morphing-card p-4 text-center">
-                    <div class="text-3xl font-black text-white mb-2" id="optimizations">3,456</div>
-                    <div class="text-white/80 text-sm">אופטימיזציות בוצעו</div>
-                </div>
-            </div>
-        </div>
-    </section>
-
     <!-- מחולל AI חכם -->
     <section class="mb-16">
         <div class="container mx-auto px-4">
-            <div id="main-generator" class="hologram p-8">
+            <div class="glass-card p-8">
                 <div class="text-center mb-8">
-                    <h3 class="text-4xl font-black text-white mb-4">
+                    <h2 class="text-3xl font-bold text-white mb-4">
                         🧠 מחולל AI מתקדם
-                    </h3>
+                    </h2>
                     <p class="text-white/80 text-lg">
-                        בינה מלאכותית שלומדת, מתאימה ומשתפרת עם כל שימוש
+                        יצירת פרומפטים מותאמים אישית עם הגדרות מתקדמות
                     </p>
                 </div>
 
+                <div class="instruction-box">
+                    <div class="instruction-text">
+                        <i class="fas fa-info-circle mr-2"></i>
+                        <strong>הוראות שימוש:</strong> בחר את סוג ה-AI והתחום, תאר את המשימה בפירוט, והתאם את ההגדרות המתקדמות לפי הצורך
+                    </div>
+                </div>
+
                 <div class="grid md:grid-cols-3 gap-6 mb-8">
-                    <div class="p-6">
+                    <div class="glass-card p-6">
                         <label for="aiType" class="block text-white font-semibold mb-3">
                             <i class="fas fa-brain mr-2"></i>
                             סוג האינטליגנציה
                         </label>
-                        <input type="text" id="aiType" list="aiType-list" class="input-field w-full p-4 rounded-xl" placeholder="בחר או הקלד סוג AI">
+                        <input type="text" id="aiType" list="aiType-list" class="input-field" placeholder="בחר או הקלד סוג AI">
                         <datalist id="aiType-list">
                             <option value="יצירתי ואמנותי"></option>
                             <option value="אנליטי ולוגי"></option>
@@ -356,12 +241,12 @@
                         </datalist>
                     </div>
 
-                    <div class="p-6">
+                    <div class="glass-card p-6">
                         <label for="expertise" class="block text-white font-semibold mb-3">
                             <i class="fas fa-target mr-2"></i>
                             תחום מומחיות
                         </label>
-                        <input type="text" id="expertise" list="expertise-list" class="input-field w-full p-4 rounded-xl" placeholder="בחר או הקלד תחום">
+                        <input type="text" id="expertise" list="expertise-list" class="input-field" placeholder="בחר או הקלד תחום">
                         <datalist id="expertise-list">
                             <option value="יצירת תוכן"></option>
                             <option value="שיווק ופרסום"></option>
@@ -374,12 +259,12 @@
                         </datalist>
                     </div>
 
-                    <div class="p-6">
+                    <div class="glass-card p-6">
                         <label for="complexity" class="block text-white font-semibold mb-3">
                             <i class="fas fa-gauge mr-2"></i>
                             רמת התקדמות
                         </label>
-                        <input type="text" id="complexity" list="complexity-list" class="input-field w-full p-4 rounded-xl" placeholder="בחר או הקלד רמה">
+                        <input type="text" id="complexity" list="complexity-list" class="input-field" placeholder="בחר או הקלד רמה">
                         <datalist id="complexity-list">
                             <option value="מתחיל - פשוט וברור"></option>
                             <option value="בינוני - מאוזן ומפורט"></option>
@@ -390,69 +275,75 @@
                     </div>
                 </div>
 
-                <div class="mb-6 px-6">
-                    <label for="taskDescription" class="block text-white font-semibold mb-3">
+                <div class="mb-6">
+                    <label class="block text-white font-semibold mb-3">
                         <i class="fas fa-comment-dots mr-2"></i>
-                        תאר את המשימה שלך (AI יבין ויתאים)
+                        תיאור המשימה
                     </label>
                     <textarea 
                         id="taskDescription" 
-                        placeholder="כתוב כאן במילים פשוטות מה אתה רוצה לעשות..."
-                        class="input-field w-full h-32 p-4 rounded-xl resize-none"
+                        placeholder="תאר כאן במילים פשוטות מה אתה רוצה לעשות... למשל: 'אני רוצה לכתוב מאמר על בינה מלאכותית לקהל עסקי'"
+                        class="input-field h-32 resize-none"
                     ></textarea>
                 </div>
 
-                <div class="mb-6 px-6">
+                <div class="mb-6">
                     <div class="text-white font-semibold mb-3">
                         <i class="fas fa-sliders-h mr-2"></i>
-                        הגדרות AI מתקדמות
+                        הגדרות מתקדמות
+                    </div>
+                    <div class="instruction-text mb-4">
+                        💡 <strong>טיפ:</strong> הזז את הסליידרים לפי סגנון התוכן הרצוי - יצירתיות גבוהה לתוכן חדשני, פורמליות גבוהה לתקשורת עסקית
                     </div>
                     <div class="grid md:grid-cols-3 gap-4">
                         <div>
                             <label class="text-white/80 text-sm">יצירתיות</label>
                             <input type="range" id="creativity" min="0" max="100" value="70" class="w-full">
+                            <div class="text-white/60 text-xs">נמוך = לוגי, גבוה = יצירתי</div>
                         </div>
                         <div>
                             <label class="text-white/80 text-sm">פורמליות</label>
                             <input type="range" id="formality" min="0" max="100" value="50" class="w-full">
+                            <div class="text-white/60 text-xs">נמוך = חברותי, גבוה = רשמי</div>
                         </div>
                         <div>
                             <label class="text-white/80 text-sm">אורך תגובה</label>
                             <input type="range" id="responseLength" min="0" max="100" value="60" class="w-full">
+                            <div class="text-white/60 text-xs">נמוך = קצר, גבוה = מפורט</div>
                         </div>
                     </div>
                 </div>
 
                 <div class="text-center mb-6">
-                    <button onclick="generateAIPrompt()" class="holo-button text-xl px-12 py-4">
-                        <i class="fas fa-rocket mr-3"></i>
+                    <button onclick="generateAIPrompt()" class="btn-primary text-lg px-8 py-3">
+                        <i class="fas fa-rocket mr-2"></i>
                         יצירת פרומפט חכם
                     </button>
                 </div>
 
-                <div id="aiProgress" class="hidden mb-6 px-6">
+                <div id="aiProgress" class="hidden mb-6">
                     <div class="text-white mb-2">
                         <i class="fas fa-cog fa-spin mr-2"></i>
                         AI עובד על הפרומפט שלך...
                     </div>
-                    <div class="smart-progress">
-                        <div class="smart-progress-bar" id="progressBar" style="width: 0%"></div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="progressBar" style="width: 0%"></div>
                     </div>
                 </div>
 
                 <div id="aiResult" class="hidden">
-                    <div class="morphing-card p-6 mb-4">
+                    <div class="glass-card p-6 mb-4">
                         <div class="flex justify-between items-center mb-4">
                             <h4 class="text-xl font-bold text-white">
                                 <i class="fas fa-magic mr-2"></i>
-                                הפרומפט החכם שנוצר:
+                                הפרומפט שנוצר:
                             </h4>
-                            <div class="flex space-x-2 space-x-reverse">
-                                <button onclick="copyPrompt()" class="holo-button px-4 py-2 text-sm">
+                            <div class="flex gap-2">
+                                <button onclick="copyPrompt()" class="btn-primary px-4 py-2 text-sm">
                                     <i class="fas fa-copy mr-1"></i>
                                     העתק
                                 </button>
-                                <button onclick="initiateOptimizationFromGenerator()" class="holo-button px-4 py-2 text-sm">
+                                <button onclick="initiateOptimizationFromGenerator()" class="btn-primary px-4 py-2 text-sm">
                                     <i class="fas fa-wand-magic-sparkles mr-1"></i>
                                     שפר עוד
                                 </button>
@@ -462,7 +353,7 @@
                     </div>
 
                     <div class="grid md:grid-cols-2 gap-4">
-                        <div class="morphing-card p-4">
+                        <div class="glass-card p-4">
                             <h5 class="text-white font-semibold mb-2">
                                 <i class="fas fa-chart-line mr-2"></i>
                                 ניתוח איכות
@@ -472,7 +363,7 @@
                             </div>
                         </div>
 
-                        <div class="morphing-card p-4">
+                        <div class="glass-card p-4">
                             <h5 class="text-white font-semibold mb-2">
                                 <i class="fas fa-lightbulb mr-2"></i>
                                 הצעות שיפור
@@ -485,37 +376,175 @@
         </div>
     </section>
 
-    <!-- תחנות עבודה חכמות -->
+    <!-- מעבדות מתמחות -->
     <section class="mb-16">
         <div class="container mx-auto px-4">
             <div class="text-center mb-12">
-                <h3 class="text-4xl font-black text-white mb-4">
+                <h2 class="text-3xl font-bold text-white mb-4">
                     🔬 מעבדות מתמחות
-                </h3>
+                </h2>
+                <p class="text-white/80 text-lg">
+                    כלים מתקדמים לסוגי פרומפטים שונים
+                </p>
             </div>
 
             <div class="grid lg:grid-cols-2 xl:grid-cols-3 gap-8">
-                <!-- מעבדת אופטימיזציה -->
-                <div id="optimization-lab" class="morphing-card p-6">
+                <!-- מעבדת Chain of Thought -->
+                <div class="glass-card p-6">
                     <div class="text-center mb-6">
-                        <div class="ai-eye mx-auto mb-4" style="background: radial-gradient(circle, #f59e0b 0%, #d97706 50%, #92400e 100%);"></div>
-                        <h4 class="text-2xl font-bold text-white">מעבדת השיפור החכם</h4>
-                        <p class="text-white/70">AI שמשפר כל פרומפט למקסימום יעילות</p>
+                        <div class="w-16 h-16 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full mx-auto mb-4 flex items-center justify-center">
+                            <i class="fas fa-brain text-white text-2xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-white">מעבדת החשיבה השלבית</h3>
+                        <p class="text-white/70 text-sm">פתרון בעיות מורכבות שלב אחר שלב</p>
+                    </div>
+
+                    <div class="instruction-box">
+                        <div class="instruction-text">
+                            💡 <strong>מתי להשתמש:</strong> לבעיות מורכבות, החלטות עסקיות, תכנון פרויקטים. ה-AI יפרק את הבעיה לשלבים ברורים
+                        </div>
                     </div>
 
                     <div class="mb-4">
-                        <label for="originalPrompt" class="block text-white font-semibold mb-3">
-                            <i class="fas fa-edit mr-2"></i>
-                            הדבק פרומפט לשיפור
-                        </label>
+                        <input 
+                            type="text" 
+                            id="chainTopic" 
+                            placeholder="לדוגמה: איך לפתוח עסק טכנולוגי חדש?"
+                            class="input-field"
+                        >
+                    </div>
+
+                    <button onclick="generateChainOfThought()" class="btn-primary w-full">
+                        <i class="fas fa-brain mr-2"></i>
+                        צור חשיבה שלבית
+                    </button>
+
+                    <div id="chainResult" class="hidden mt-4 glass-card p-4 bg-black/20">
+                        <pre id="chainOutput" class="text-white/90 text-sm leading-relaxed whitespace-pre-wrap"></pre>
+                    </div>
+                </div>
+
+                <!-- מעבדת Role Playing -->
+                <div class="glass-card p-6">
+                    <div class="text-center mb-6">
+                        <div class="w-16 h-16 bg-gradient-to-br from-green-500 to-teal-600 rounded-full mx-auto mb-4 flex items-center justify-center">
+                            <i class="fas fa-user-tie text-white text-2xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-white">מעבדת משחק התפקידים</h3>
+                        <p class="text-white/70 text-sm">AI מתגלם בכל מקצוע ותפקיד</p>
+                    </div>
+
+                    <div class="instruction-box">
+                        <div class="instruction-text">
+                            🎭 <strong>מתי להשתמש:</strong> לקבלת עצות מקצועיות, סימולציית שיחות, הכנה לראיונות. ה-AI יהפוך למומחה בתחום
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-2 gap-3 mb-4">
+                        <input 
+                            type="text" 
+                            id="roleType" 
+                            placeholder="מנהל שיווק"
+                            class="input-field text-sm"
+                        >
+                        <input 
+                            type="text" 
+                            id="experience" 
+                            placeholder="10 שנים"
+                            class="input-field text-sm"
+                        >
+                    </div>
+
+                    <div class="mb-4">
+                        <textarea 
+                            id="roleChallenge" 
+                            placeholder="לדוגמה: איך לבנות אסטרטגיית שיווק דיגיטלי לחברה חדשה?"
+                            class="input-field h-20 resize-none text-sm"
+                        ></textarea>
+                    </div>
+
+                    <button onclick="generateRolePlay()" class="btn-primary w-full">
+                        <i class="fas fa-user-tie mr-2"></i>
+                        יצור מומחה AI
+                    </button>
+
+                    <div id="roleResult" class="hidden mt-4 glass-card p-4 bg-black/20">
+                        <pre id="roleOutput" class="text-white/90 text-sm leading-relaxed whitespace-pre-wrap"></pre>
+                    </div>
+                </div>
+
+                <!-- מעבדת Few-Shot Learning -->
+                <div class="glass-card p-6">
+                    <div class="text-center mb-6">
+                        <div class="w-16 h-16 bg-gradient-to-br from-purple-500 to-pink-600 rounded-full mx-auto mb-4 flex items-center justify-center">
+                            <i class="fas fa-graduation-cap text-white text-2xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-white">מעבדת למידת הדוגמאות</h3>
+                        <p class="text-white/70 text-sm">AI לומד מדוגמאות ויוצר דברים דומים</p>
+                    </div>
+
+                    <div class="instruction-box">
+                        <div class="instruction-text">
+                            🎓 <strong>מתי להשתמש:</strong> כשיש לך דוגמאות טובות ורוצה עוד כמותן. ה-AI ילמד את הסגנון ויצור תוכן דומה
+                        </div>
+                    </div>
+
+                    <div class="mb-4">
+                        <input type="text" id="exampleType" list="exampleType-list" class="input-field" placeholder="סוג התוכן">
+                        <datalist id="exampleType-list">
+                            <option value="כותרות פרסומיות"></option>
+                            <option value="אימיילים שיווקיים"></option>
+                            <option value="פוסטים לרשתות חברתיות"></option>
+                            <option value="תיאורי מוצרים"></option>
+                            <option value="מאמרים וכתבות"></option>
+                            <option value="מצגות עסקיות"></option>
+                        </datalist>
+                    </div>
+
+                    <div class="mb-4">
+                        <textarea 
+                            id="examples" 
+                            placeholder="הכנס כאן 2-3 דוגמאות איכותיות, כל אחת בשורה נפרדת...&#10;דוגמה 1: כותרת מעניינת שמושכת קוראים&#10;דוגמה 2: עוד כותרת עם סגנון דומה"
+                            class="input-field h-24 resize-none text-sm"
+                        ></textarea>
+                    </div>
+
+                    <button onclick="generateFewShot()" class="btn-primary w-full">
+                        <i class="fas fa-graduation-cap mr-2"></i>
+                        למד מהדוגמאות
+                    </button>
+
+                    <div id="fewShotResult" class="hidden mt-4 glass-card p-4 bg-black/20">
+                        <pre id="fewShotOutput" class="text-white/90 text-sm leading-relaxed whitespace-pre-wrap"></pre>
+                    </div>
+                </div>
+
+                <!-- מעבדת אופטימיזציה -->
+                <div class="glass-card p-6">
+                    <div class="text-center mb-6">
+                        <div class="w-16 h-16 bg-gradient-to-br from-orange-500 to-red-600 rounded-full mx-auto mb-4 flex items-center justify-center">
+                            <i class="fas fa-magic text-white text-2xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-white">מעבדת השיפור החכם</h3>
+                        <p class="text-white/70 text-sm">שיפור פרומפטים קיימים למקסימום יעילות</p>
+                    </div>
+
+                    <div class="instruction-box">
+                        <div class="instruction-text">
+                            ⚡ <strong>מתי להשתמש:</strong> כשיש לך פרומפט שעובד אבל רוצה לשפר אותו. ה-AI יוסיף מבנה, בהירות והקשר
+                        </div>
+                    </div>
+
+                    <div class="mb-4">
                         <textarea 
                             id="originalPrompt" 
-                            class="input-field w-full h-24 p-3 rounded-lg resize-none text-sm"
+                            placeholder="הדבק כאן פרומפט שרוצה לשפר..."
+                            class="input-field h-24 resize-none text-sm"
                         ></textarea>
                     </div>
 
                     <div class="grid grid-cols-2 gap-3 mb-4">
-                        <input type="text" id="optimizationGoal" list="optimizationGoal-list" class="input-field w-full p-2 rounded-lg text-sm" placeholder="מטרת השיפור">
+                        <input type="text" id="optimizationGoal" list="optimizationGoal-list" class="input-field text-sm" placeholder="מטרת השיפור">
                         <datalist id="optimizationGoal-list">
                             <option value="בהירות ופשטות"></option>
                             <option value="יצירתיות וחדשנות"></option>
@@ -523,7 +552,7 @@
                             <option value="יעילות וקצרנות"></option>
                         </datalist>
 
-                        <input type="text" id="targetAudience" list="targetAudience-list" class="input-field w-full p-2 rounded-lg text-sm" placeholder="קהל יעד">
+                        <input type="text" id="targetAudience" list="targetAudience-list" class="input-field text-sm" placeholder="קהל יעד">
                         <datalist id="targetAudience-list">
                             <option value="כללי"></option>
                             <option value="מקצועי"></option>
@@ -532,32 +561,236 @@
                         </datalist>
                     </div>
 
-                    <button onclick="optimizePrompt()" class="holo-button w-full">
+                    <button onclick="optimizePrompt()" class="btn-primary w-full">
                         <i class="fas fa-magic mr-2"></i>
-                        שפר פרומפט באופן חכם
+                        שפר פרומפט
                     </button>
 
                     <div id="optimizationResult" class="hidden mt-4">
-                        <div class="morphing-card p-4 bg-black/20 mb-3">
+                        <div class="glass-card p-4 bg-black/20 mb-3">
                             <h5 class="text-white font-semibold mb-2">✨ גרסה משופרת:</h5>
                             <pre id="optimizedOutput" class="text-white/90 text-sm leading-relaxed whitespace-pre-wrap"></pre>
                         </div>
-                        <div class="morphing-card p-4 bg-black/20">
-                            <h5 class="text-white font-semibold mb-2">📊 ניתוח השיפורים:</h5>
+                        <div class="glass-card p-4 bg-black/20">
+                            <h5 class="text-white font-semibold mb-2">📊 השיפורים שבוצעו:</h5>
                             <div id="improvementAnalysis" class="text-white/80 text-sm"></div>
                         </div>
+                    </div>
+                </div>
+
+                <!-- מנתח הפרומפטים -->
+                <div class="glass-card p-6">
+                    <div class="text-center mb-6">
+                        <div class="w-16 h-16 bg-gradient-to-br from-red-500 to-pink-600 rounded-full mx-auto mb-4 flex items-center justify-center">
+                            <i class="fas fa-microscope text-white text-2xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-white">מנתח הפרומפטים החכם</h3>
+                        <p class="text-white/70 text-sm">ניתוח מקצועי וציון לפרומפטים</p>
+                    </div>
+
+                    <div class="instruction-box">
+                        <div class="instruction-text">
+                            🔍 <strong>מתי להשתמש:</strong> לבדוק איכות פרומפט לפני שימוש. ה-AI יעריך 15+ פרמטרים ויציע שיפורים
+                        </div>
+                    </div>
+
+                    <div class="mb-4">
+                        <textarea 
+                            id="promptToAnalyze" 
+                            placeholder="הדבק כאן פרומפט לניתוח מעמיק..."
+                            class="input-field h-24 resize-none text-sm"
+                        ></textarea>
+                    </div>
+
+                    <button onclick="analyzePrompt()" class="btn-primary w-full">
+                        <i class="fas fa-microscope mr-2"></i>
+                        נתח פרומפט
+                    </button>
+
+                    <div id="analysisResult" class="hidden mt-4">
+                        <div class="glass-card p-4 bg-black/20 mb-3">
+                            <div class="flex justify-between items-center mb-3">
+                                <h5 class="text-white font-semibold">🏆 ציון כללי:</h5>
+                                <div id="overallScore" class="text-2xl font-bold text-white"></div>
+                            </div>
+                            <div class="chart-container" style="height: 250px;">
+                                <canvas id="analysisChart"></canvas>
+                            </div>
+                        </div>
+                        <div class="glass-card p-4 bg-black/20">
+                            <h5 class="text-white font-semibold mb-2">💡 המלצות לשיפור:</h5>
+                            <div id="detailedSuggestions" class="text-white/80 text-sm space-y-2"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- מעבדת הקהילה -->
+                <div class="glass-card p-6">
+                    <div class="text-center mb-6">
+                        <div class="w-16 h-16 bg-gradient-to-br from-cyan-500 to-blue-600 rounded-full mx-auto mb-4 flex items-center justify-center">
+                            <i class="fas fa-users text-white text-2xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-white">מעבדת הקהילה</h3>
+                        <p class="text-white/70 text-sm">פרומפטים מובילים מהקהילה</p>
+                    </div>
+
+                    <div class="instruction-box">
+                        <div class="instruction-text">
+                            🌟 <strong>פרומפטים מובילים:</strong> דוגמאות איכותיות מיוצרי תוכן מקצועיים
+                        </div>
+                    </div>
+
+                    <div class="space-y-2 mb-4">
+                        <div class="flex justify-between text-sm">
+                            <span class="text-white/70">פרומפט שיווק עם AI</span>
+                            <span class="text-yellow-400">★ 4.9</span>
+                        </div>
+                        <div class="flex justify-between text-sm">
+                            <span class="text-white/70">ניתוח נתונים מתקדם</span>
+                            <span class="text-yellow-400">★ 4.8</span>
+                        </div>
+                        <div class="flex justify-between text-sm">
+                            <span class="text-white/70">כתיבה יצירתית</span>
+                            <span class="text-yellow-400">★ 4.7</span>
+                        </div>
+                    </div>
+
+                    <div class="space-y-3">
+                        <button onclick="browsePrompts()" class="btn-primary w-full text-sm">
+                            <i class="fas fa-search mr-2"></i>
+                            חפש פרומפטים
+                        </button>
+                        <button onclick="sharePrompt()" class="btn-primary w-full text-sm">
+                            <i class="fas fa-share mr-2"></i>
+                            שתף פרומפט
+                        </button>
+                    </div>
+
+                    <div id="communityResult" class="hidden mt-4 glass-card p-4 bg-black/20">
+                        <div id="communityContent" class="text-white/90 text-sm"></div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-    
+
+    <!-- אנליטיקס -->
+    <section class="mb-16">
+        <div class="container mx-auto px-4">
+            <div class="glass-card p-8">
+                <div class="text-center mb-8">
+                    <h2 class="text-3xl font-bold text-white mb-4">
+                        📊 אנליטיקס וביצועים
+                    </h2>
+                    <p class="text-white/80 text-lg">
+                        מעקב אחר טרנדים וביצועי פרומפטים
+                    </p>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div class="glass-card p-6">
+                        <h3 class="text-xl font-bold text-white mb-4">
+                            <i class="fas fa-chart-area mr-2"></i>
+                            ביצועי הפרומפטים השבוע
+                        </h3>
+                        <div class="chart-container">
+                            <canvas id="performanceChart"></canvas>
+                        </div>
+                    </div>
+
+                    <div class="glass-card p-6">
+                        <h3 class="text-xl font-bold text-white mb-4">
+                            <i class="fas fa-pie-chart mr-2"></i>
+                            התפלגות סוגי הפרומפטים
+                        </h3>
+                        <div class="chart-container">
+                            <canvas id="distributionChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-8 grid md:grid-cols-3 gap-4">
+                    <div class="glass-card p-4 text-center">
+                        <div class="text-2xl font-bold text-white">8.7</div>
+                        <div class="text-white/70 text-sm">ציון ממוצע</div>
+                    </div>
+                    <div class="glass-card p-4 text-center">
+                        <div class="text-2xl font-bold text-white">שיווק</div>
+                        <div class="text-white/70 text-sm">קטגוריה פופולרית</div>
+                    </div>
+                    <div class="glass-card p-4 text-center">
+                        <div class="text-2xl font-bold text-white">96.2%</div>
+                        <div class="text-white/70 text-sm">דיוק AI</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- קישורים למעבדות נוספות -->
+    <section class="mb-16">
+        <div class="container mx-auto px-4">
+            <div class="glass-card p-8">
+                <div class="text-center mb-8">
+                    <h2 class="text-2xl font-bold text-white mb-4">
+                        🔗 מעבדות נוספות
+                    </h2>
+                    <p class="text-white/80">
+                        גלה עוד גישות וכלים ליצירת פרומפטים
+                    </p>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div class="glass-card p-6 text-center">
+                        <div class="w-16 h-16 bg-gradient-to-br from-orange-500 to-red-600 rounded-full mx-auto mb-4 flex items-center justify-center">
+                            <i class="fas fa-rocket text-white text-2xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-3">מעבדה מתקדמת</h3>
+                        <p class="text-white/70 text-sm mb-4">
+                            גרסה מקצועית עם כלים חדשניים
+                        </p>
+                        <a href="https://prompt22.netlify.app/" target="_blank" class="btn-primary">
+                            <i class="fas fa-external-link-alt mr-2"></i>
+                            התנסה במעבדה המתקדמת
+                        </a>
+                    </div>
+
+                    <div class="glass-card p-6 text-center">
+                        <div class="w-16 h-16 bg-gradient-to-br from-green-500 to-teal-600 rounded-full mx-auto mb-4 flex items-center justify-center">
+                            <i class="fas fa-target text-white text-2xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-3">מעבדה קלאסית</h3>
+                        <p class="text-white/70 text-sm mb-4">
+                            גרסה פשוטה לשימוש יומיומי
+                        </p>
+                        <a href="https://prompt23.netlify.app/" target="_blank" class="btn-primary">
+                            <i class="fas fa-external-link-alt mr-2"></i>
+                            התנסה במעבדה הקלאסית
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- פוטר -->
-    <footer class="py-16">
-        <div class="container mx-auto px-4 text-center">
-            <p class="text-white/60 text-sm">
-                © 2024 GENSPARK × LANCHI | המעבדה המתקדמת ביותר ליצירת פרומפטים
-            </p>
+    <footer class="py-12">
+        <div class="container mx-auto px-4">
+            <div class="glass-card p-8">
+                <div class="text-center">
+                    <div class="flex items-center justify-center mb-6">
+                        <img src="https://cdn1.genspark.ai/user-upload-image/22_generated/3c1fc5ac-8855-4c3d-a9d0-a082d92e013d" alt="LANCHI Logo" class="w-12 h-12 rounded-full ml-3">
+                        <div>
+                            <h4 class="text-white font-bold">GENSPARK × LANCHI</h4>
+                            <p class="text-white/70 text-sm">מעבדת פרומפטים מקצועית</p>
+                        </div>
+                    </div>
+                    <p class="text-white/60 text-sm max-w-2xl mx-auto">
+                        כלים מתקדמים ליצירת פרומפטים איכותיים עם בינה מלאכותית מתקדמת. 
+                        פותח במיוחד עבור יוצרי תוכן ומקצועי השיווק והטכנולוגיה.
+                    </p>
+                </div>
+            </div>
         </div>
     </footer>
 
@@ -565,59 +798,60 @@
     <div id="notificationContainer"></div>
 
     <script>
-        let qualityChartInstance;
-        let analysisChartInstance; 
+        // משתנים גלובליים
+        let promptHistory = [];
+        let qualityChartInstance, analysisChartInstance;
 
-        function createGalaxy() {
-            const galaxy = document.getElementById('galaxy');
-            if (galaxy.children.length > 0) return; 
-            for (let i = 0; i < 100; i++) {
-                const star = document.createElement('div');
-                star.className = 'star';
-                star.style.left = Math.random() * 100 + '%';
-                star.style.top = Math.random() * 100 + '%';
-                star.style.width = Math.random() * 3 + 1 + 'px';
-                star.style.height = star.style.width;
-                star.style.animationDelay = Math.random() * 3 + 's';
-                galaxy.appendChild(star);
-            }
-        }
+        // מפות נתונים
+        const personalityMap = {
+            'יצירתי ואמנותי': 'creative',
+            'אנליטי ולוגי': 'analytical',
+            'רגשי ואמפתי': 'emotional',
+            'טכני ומדעי': 'technical',
+            'אסטרטגי ועסקי': 'strategic',
+            'חינוכי והדרכתי': 'educational'
+        };
 
-        function updateRealTimeStats() {
-            setInterval(() => {
-                document.getElementById('promptsGenerated').textContent = Math.floor(1200 + Math.random() * 100).toLocaleString();
-                document.getElementById('successRate').textContent = (96 + Math.random() * 2).toFixed(1) + '%';
-                document.getElementById('activeUsers').textContent = Math.floor(800 + Math.random() * 200).toLocaleString();
-                document.getElementById('optimizations').textContent = Math.floor(3400 + Math.random() * 100).toLocaleString();
-            }, 5000);
-        }
-
-        function updateDynamicColors() {
-            const hue = Math.floor(Date.now() / 100) % 360;
-            document.documentElement.style.setProperty('--hue', hue);
-        }
-
+        // הודעות
         function showNotification(message, type = 'success', duration = 3000) {
             const container = document.getElementById('notificationContainer');
             const notification = document.createElement('div');
             notification.className = `notification ${type}`;
-            const icons = { success: 'fa-check-circle', warning: 'fa-exclamation-triangle', error: 'fa-times-circle', info: 'fa-info-circle' };
-            notification.innerHTML = `<div class="flex items-center"><i class="fas ${icons[type]} ml-3 text-lg"></i><span>${message}</span></div>`;
+            
+            const icons = {
+                success: 'fas fa-check-circle',
+                warning: 'fas fa-exclamation-triangle',
+                error: 'fas fa-times-circle',
+                info: 'fas fa-info-circle'
+            };
+            
+            notification.innerHTML = `
+                <div class="flex items-center">
+                    <i class="${icons[type]} ml-3 text-lg"></i>
+                    <span>${message}</span>
+                </div>
+            `;
+            
             container.appendChild(notification);
             setTimeout(() => notification.classList.add('show'), 100);
+            
             setTimeout(() => {
                 notification.classList.remove('show');
                 setTimeout(() => container.removeChild(notification), 500);
             }, duration);
         }
 
+        // מחולל AI
         function generateAIPrompt() {
-            const aiTypeInput = document.getElementById('aiType').value;
-            const expertiseInput = document.getElementById('expertise').value;
-            const complexityInput = document.getElementById('complexity').value;
+            const aiType = document.getElementById('aiType').value;
+            const expertise = document.getElementById('expertise').value;
+            const complexity = document.getElementById('complexity').value;
             const taskDescription = document.getElementById('taskDescription').value;
+            const creativity = document.getElementById('creativity').value;
+            const formality = document.getElementById('formality').value;
+            const responseLength = document.getElementById('responseLength').value;
 
-            if (!aiTypeInput || !expertiseInput || !complexityInput || !taskDescription.trim()) {
+            if (!aiType || !expertise || !complexity || !taskDescription.trim()) {
                 showNotification('אנא מלא את כל השדות הנדרשים', 'warning');
                 return;
             }
@@ -625,38 +859,56 @@
             document.getElementById('aiProgress').classList.remove('hidden');
             document.getElementById('aiResult').classList.add('hidden');
             
-            let progress = 0;
             const progressBar = document.getElementById('progressBar');
+            let progress = 0;
+            
             const progressInterval = setInterval(() => {
                 progress += Math.random() * 15;
-                if (progress >= 100) {
-                    progress = 100;
-                    clearInterval(progressInterval);
-                    setTimeout(showAIResult, 400);
-                }
+                if (progress > 100) progress = 100;
                 progressBar.style.width = progress + '%';
+                
+                if (progress >= 100) {
+                    clearInterval(progressInterval);
+                    setTimeout(showAIResult, 500);
+                }
             }, 200);
 
             function showAIResult() {
-                const creativity = document.getElementById('creativity').value;
-                const formality = document.getElementById('formality').value;
-                const responseLength = document.getElementById('responseLength').value;
+                const creativityLevel = creativity > 70 ? 'בגישה יצירתית וחדשנית' : 
+                                     creativity > 40 ? 'בגישה מאוזנת' : 'בגישה מעשית וישירה';
+                const formalityLevel = formality > 70 ? 'בטון רשמי ומקצועי' : 
+                                     formality > 40 ? 'בטון חברותי-מקצועי' : 'בטון נעים וחברותי';
+                const responseStyle = responseLength > 70 ? 'עם הסבר מפורט ומקיף' : 
+                                    responseLength > 40 ? 'עם הסבר מאוזן' : 'עם הסבר קצר ותמציתי';
 
-                const creativityLevel = creativity > 70 ? 'בגישה יצירתית וחדשנית' : creativity > 40 ? 'בגישה מאוזנת' : 'בגישה מעשית וישירה';
-                const formalityLevel = formality > 70 ? 'בטון רשמי ומקצועי' : formality > 40 ? 'בטון חברותי-מקצועי' : 'בטון נעים וחברותי';
-                const responseStyle = responseLength > 70 ? 'עם הסבר מפורט ומקיף' : responseLength > 40 ? 'עם הסבר מאוזן' : 'עם הסבר קצר ותמציתי';
+                const prompt = `אתה מומחה ${aiType} בתחום ${expertise} עם מעל 15 שנות ניסיון מקצועי.
 
-                const prompt = `אתה מומחה ${aiTypeInput} בתחום ${expertiseInput}.
+🎯 הרקע המקצועי שלך:
+• התמחות: ${expertise} ברמה בינלאומית
+• סגנון עבודה: ${aiType} ומבוסס נתונים
+• גישה: ${creativityLevel}
+• תקשורת: ${formalityLevel}
 
-המשימה שלך: ${taskDescription}
+📋 המשימה שלך: ${taskDescription}
 
-אנא ספק פתרון ברמה של "${complexityInput}" ${responseStyle}, תוך שמירה על ${formalityLevel} וגישה ${creativityLevel}.
+אנא ספק פתרון ${complexity} ${responseStyle}:
 
-מבנה התשובה הרצוי:
-1. ניתוח המשימה.
-2. פתרון מפורט עם שלבים ברורים.
-3. דוגמאות מעשיות.
-4. המלצות להמשך.`;
+📊 מבנה התשובה:
+1. ניתוח המצב הנוכחי
+2. זיהוי אתגרים ואפשרויות
+3. פתרון מפורט עם שלבים ברורים
+4. דוגמאות מעשיות ומתרונות
+5. מדדי הצלחה ובקרה
+6. המלצות להתאמה עתידית
+
+💡 דגשים חשובים:
+• השתמש בתובנות מהניסיון המקצועי שלך
+• הסבר את הרטיונל מאחורי כל החלטה
+• ספק אלטרנטיבות כשמתאים
+• התייחס לסיכונים וכיצד למתן אותם
+• הצע דרכים למדידת הצלחה
+
+התחל בניתוח המצב ופתח פתרון מותאם לצרכים הספציפיים.`;
 
                 document.getElementById('promptText').textContent = prompt;
                 document.getElementById('aiProgress').classList.add('hidden');
@@ -664,20 +916,36 @@
 
                 createQualityChart();
                 generateSuggestions();
-                showNotification('פרומפט חכם נוצר בהצלחה!', 'success');
+
+                promptHistory.push({
+                    timestamp: new Date(),
+                    prompt: prompt,
+                    settings: { aiType, expertise, complexity, creativity, formality, responseLength }
+                });
+
+                showNotification('פרומפט חכם נוצר בהצלחה! 🎉', 'success');
             }
         }
 
+        // יצירת גרף איכות
         function createQualityChart() {
             const ctx = document.getElementById('qualityChart').getContext('2d');
-            if (qualityChartInstance) qualityChartInstance.destroy();
+            if (qualityChartInstance) {
+                qualityChartInstance.destroy();
+            }
             qualityChartInstance = new Chart(ctx, {
                 type: 'radar',
                 data: {
                     labels: ['בהירות', 'מבנה', 'יצירתיות', 'מקצועיות', 'מעשיות'],
                     datasets: [{
                         label: 'ציון איכות',
-                        data: [Math.floor(80 + Math.random() * 20), Math.floor(80 + Math.random() * 20), Math.floor(80 + Math.random() * 20), Math.floor(80 + Math.random() * 20), Math.floor(80 + Math.random() * 20)],
+                        data: [
+                            Math.floor(85 + Math.random() * 15),
+                            Math.floor(80 + Math.random() * 20),
+                            Math.floor(82 + Math.random() * 18),
+                            Math.floor(88 + Math.random() * 12),
+                            Math.floor(83 + Math.random() * 17)
+                        ],
                         backgroundColor: 'rgba(102, 126, 234, 0.2)',
                         borderColor: '#667eea',
                         borderWidth: 2,
@@ -685,83 +953,500 @@
                     }]
                 },
                 options: {
-                    responsive: true, maintainAspectRatio: false,
-                    plugins: { legend: { display: false } },
-                    scales: { r: { beginAtZero: true, max: 100, ticks: { color: 'white', backdropColor: 'transparent' }, grid: { color: 'rgba(255,255,255,0.1)' }, pointLabels: { color: 'white', font: { size: 10 } } } }
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            labels: { color: 'white' }
+                        }
+                    },
+                    scales: {
+                        r: {
+                            beginAtZero: true,
+                            max: 100,
+                            ticks: { color: 'white', backdropColor: 'transparent' },
+                            grid: { color: 'rgba(255,255,255,0.1)' },
+                            pointLabels: { color: 'white' }
+                        }
+                    }
                 }
             });
         }
-        
+
+        // הצעות שיפור
         function generateSuggestions() {
             const suggestions = [
-                '💡 הוסף דוגמאות ספציפיות מהתחום שלך.',
-                '🎯 הגדר מדדי הצלחה מדידים (KPIs).',
-                '⚡ שקול לבקש אלטרנטיבות לפתרון.',
-                '🔍 בקש התייחסות לסיכונים אפשריים.'
+                '💡 הוסף דוגמאות ספציפיות מהתחום',
+                '🎯 הגדר מדדי הצלחה מדידים (KPIs)',
+                '⚡ שקול הוספת אלטרנטיבות לפתרון',
+                '🔍 הוסף התייחסות לסיכונים אפשריים',
+                '📊 כלול מקורות מידע רלוונטיים'
             ];
-            document.getElementById('suggestions').innerHTML = suggestions.map(s => `<div class="flex items-start"><span>${s}</span></div>`).join('');
-        }
-        
-        function initiateOptimizationFromGenerator() {
-            const promptText = document.getElementById('promptText').textContent;
-            if (!promptText) {
-                showNotification('יש ליצור פרומפט תחילה.', 'warning');
-                return;
-            }
-            
-            const optimizationInput = document.getElementById('originalPrompt');
-            optimizationInput.value = promptText;
-            showNotification('הפרומפט הועבר למעבדת השיפור.', 'info');
-            document.getElementById('optimization-lab').scrollIntoView({ behavior: 'smooth', block: 'center' });
+
+            const container = document.getElementById('suggestions');
+            container.innerHTML = suggestions.map(s => `<div class="mb-2">${s}</div>`).join('');
         }
 
+        // מעבדת חשיבה שלבית
+        function generateChainOfThought() {
+            const topic = document.getElementById('chainTopic').value.trim();
+            if (!topic) {
+                showNotification('אנא הכנס נושא לחשיבה שלבית', 'warning');
+                return;
+            }
+
+            const chainPrompt = `🧠 פתרון שלבי מתקדם: ${topic}
+
+🎯 שלב 1: הגדרת הבעיה והקשר
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+• מה המטרה הסופית שאנחנו רוצים להשיג?
+• מי הגורמים המעורבים ומה האינטרסים שלהם?
+• מה המגבלות והמשאבים הזמינים?
+• איך הבעיה הזו קשורה להקשר הרחב יותר?
+
+🔍 שלב 2: איסוף וניתוח מידע
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+• אילו נתונים ומידע נדרשים לפתרון?
+• מה הגורמים השורשיים של הבעיה?
+• איך התמונה הכללית נראית מזוויות שונות?
+• מה ניתן ללמוד מפתרונות דומים בעבר?
+
+💡 שלב 3: יצירת אפשרויות פתרון
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+• חשב על 3-5 פתרונות שונים לחלוטין
+• בחן כל פתרון: יתרונות, חסרונות, סיכונים
+• שקול פתרונות היברידיים ויצירתיים
+• הערך את ההשפעה החזויה של כל פתרון
+
+⚖️ שלב 4: הערכה ובחירת פתרון
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+• דרג את הפתרונות לפי קריטריונים ברורים
+• בחן את ההלימה למטרות ולמגבלות
+• שקול את הסיכונים והדרכים למתן אותם
+• בחר בפתרון המיטבי עם נימוק ברור
+
+🚀 שלב 5: תכנון יישום מפורט
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+• פרק את הפתרון לשלבים קטנים וניתנים לביצוע
+• הגדר לוח זמנים ומשאבים נדרשים
+• זהה נקודות בקרה ומדדי התקדמות
+• הכן תכנית גיבוי למקרה של בעיות
+
+📊 שלב 6: ביצוע ומעקב
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+• יישם את הפתרון בצורה מדורגת
+• עקוב אחר ההתקדמות ומדוד תוצאות
+• התאם את התכנית בהתאם לממצאים
+• למד מהתהליך לשיפור עתידי
+
+💬 עכשיו נתח את הנושא "${topic}" לפי המתודולוגיה הזו, תוך מתן דגש על חשיבה ביקורתית וצעדים מעשיים.`;
+
+            document.getElementById('chainOutput').textContent = chainPrompt;
+            document.getElementById('chainResult').classList.remove('hidden');
+            
+            navigator.clipboard.writeText(chainPrompt);
+            showNotification('פרומפט חשיבה שלבית נוצר והועתק! 🧠', 'success');
+        }
+
+        // מעבדת משחק תפקידים
+        function generateRolePlay() {
+            const roleType = document.getElementById('roleType').value.trim();
+            const experience = document.getElementById('experience').value.trim();
+            const challenge = document.getElementById('roleChallenge').value.trim();
+
+            if (!roleType || !challenge) {
+                showNotification('אנא מלא את כל השדות הנדרשים', 'warning');
+                return;
+            }
+
+            const rolePrompt = `🎭 התגלמות מקצועית: ${roleType}
+
+👤 זהות מקצועית:
+━━━━━━━━━━━━━━━━━━━━━
+אתה ${roleType} מוכר ומנוסה עם ${experience || '15+'} שנות ניסיון בתחום.
+
+🏆 הרקע המקצועי שלך:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━
+• התמחות: [הגדר את התמחותך הספציפית]
+• הישגים: [פרט הישגים מרכזיים בקריירה]
+• סגנון עבודה: מקצועי, מעמיק ומבוסס ניסיון
+• גישה: שאילת שאלות חדות לפני מתן עצות
+• נקודות חוזק: [ציין 3 נקודות חוזק מרכזיות]
+
+💼 המקרה הנוכחי:
+━━━━━━━━━━━━━━━━━━━━━
+"${challenge}"
+
+🎯 תהליך העבודה שלך:
+━━━━━━━━━━━━━━━━━━━━━━━━
+1. **הבנת המצב**: שאל שאלות מעמיקות להבנת ההקשר המלא
+2. **ניתוח מקצועי**: נתח את המצב מהזווית המקצועית שלך
+3. **זיהוי אפשרויות**: הצג מספר חלופות עם יתרונות וחסרונות
+4. **המלצה מקצועית**: תן המלצה ברורה עם נימוק מבוסס ניסיון
+5. **תכנית פעולה**: פרט שלבים קונקרטיים ליישום
+6. **מעקב ובקרה**: הגדר איך למדוד הצלחה ולהתאים
+
+💡 סגנון התקשורת שלך:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━
+• דבר כמומחה בתחום עם ביטחון ומקצועיות
+• השתמש במונחים מקצועיים אך הסבר אותם
+• ספק דוגמאות מהניסיון שלך (ללא פרטים אישיים)
+• הזכר סיכונים ודרכים למתן אותם
+• תן עצות מעשיות וניתנות ליישום
+
+🚀 התחל עכשיו:
+━━━━━━━━━━━━━━━━━
+התייחס למקרה שהוצג, תוך התגלמות מלאה בתפקיד המקצועי שלך.`;
+
+            document.getElementById('roleOutput').textContent = rolePrompt;
+            document.getElementById('roleResult').classList.remove('hidden');
+            
+            navigator.clipboard.writeText(rolePrompt);
+            showNotification('פרומפט משחק תפקידים נוצר והועתק! 🎭', 'success');
+        }
+
+        // מעבדת למידת דוגמאות
+        function generateFewShot() {
+            const exampleType = document.getElementById('exampleType').value;
+            const examples = document.getElementById('examples').value.trim();
+
+            if (!exampleType || !examples) {
+                showNotification('אנא בחר סוג דוגמאות והכנס דוגמאות', 'warning');
+                return;
+            }
+
+            const fewShotPrompt = `🎓 למידה מדוגמאות: ${exampleType}
+
+📚 הוראות למערכת:
+━━━━━━━━━━━━━━━━━━━━━━
+למד מהדוגמאות הבאות את הדפוס, הסגנון, המבנה וטון הכתיבה. 
+אנא נתח כל דוגמה ובחן:
+• מבנה המשפט ואורך הטקסט
+• בחירת המילים והטון
+• טכניקות שיווקיות או רטוריות
+• פורמט ועיצוב הטקסט
+
+🎯 דוגמאות ללמידה:
+━━━━━━━━━━━━━━━━━━━━━━━
+
+${examples.split('\n').map((example, index) => 
+`דוגמה ${index + 1}:
+"${example.trim()}"
+
+📋 ניתוח מהיר:
+• סגנון: [נתח את הסגנון]
+• אורך: ${example.trim().split(' ').length} מילים
+• טכניקות: [זהה טכניקות בולטות]
+`).join('\n')}
+
+🚀 המשימה:
+━━━━━━━━━━━━━━━━━━
+עכשיו צור תוכן חדש מסוג ${exampleType} בסגנון זהה:
+
+1. **נתח את הדפוס**: מה משותף לכל הדוגמאות?
+2. **זהה עקרונות**: אילו עקרונות מנחים את הכתיבה?
+3. **צור תוכן חדש**: כתוב [כמות רצויה] דוגמאות חדשות
+4. **שמור על עקביות**: וודא שהסגנון זהה לדוגמאות
+
+💡 דגשים חשובים:
+━━━━━━━━━━━━━━━━━━━━━
+• שמור על אותו טון ואנרגיה
+• השתמש במבנה דומה
+• התאם את האורך לדוגמאות
+• שלב טכניקות שזיהית בדוגמאות
+• וודא שהתוכן רלוונטי ומעניין
+
+🎨 הנושא החדש:
+━━━━━━━━━━━━━━━━━
+[כאן תכניס את הנושא הספציפי שעבורו אתה רוצה ליצור תוכן חדש]`;
+
+            document.getElementById('fewShotOutput').textContent = fewShotPrompt;
+            document.getElementById('fewShotResult').classList.remove('hidden');
+            
+            navigator.clipboard.writeText(fewShotPrompt);
+            showNotification('פרומפט למידת דוגמאות נוצר והועתק! 🎓', 'success');
+        }
+
+        // שיפור פרומפט
         function optimizePrompt() {
             const originalPrompt = document.getElementById('originalPrompt').value.trim();
-            const optimizationGoal = document.getElementById('optimizationGoal').value;
-            const targetAudience = document.getElementById('targetAudience').value;
+            const goal = document.getElementById('optimizationGoal').value;
+            const audience = document.getElementById('targetAudience').value;
 
             if (!originalPrompt) {
                 showNotification('אנא הכנס פרומפט לשיפור', 'warning');
                 return;
             }
 
-            const optimizedPrompt = `[CONTEXT]
-אתה מומחה מקצועי ומנוסה.
+            const optimizedPrompt = `⚡ אופטימיזציה חכמה של פרומפט
 
-[TASK]
-נתח את הפרומפט הבא וצור גרסה משופרת שלו:
+📋 הפרומפט המקורי:
+━━━━━━━━━━━━━━━━━━━━━━━
 "${originalPrompt}"
 
-[INSTRUCTIONS]
-הגרסה המשופרת צריכה להיות ממוקדת ב: "${optimizationGoal || 'שיפור כללי'}", ומותאמת לקהל יעד: "${targetAudience || 'כללי'}".
-הוסף מבנה ברור, הקשר, והנחיות ספציפיות לפורמט התגובה הרצוי.`;
+🎯 יעדי השיפור:
+━━━━━━━━━━━━━━━━━━━
+• מטרה ראשית: ${goal || 'שיפור כללי'}
+• קהל יעד: ${audience || 'כללי'}
+
+🔍 ניתוח הפרומפט הנוכחי:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━
+1. **בהירות**: [נתח את רמת הבהירות]
+2. **מבנה**: [בחן את המבנה הלוגי]
+3. **ספציפיות**: [הערך את רמת הפירוט]
+4. **הקשר**: [בדוק אם יש מספיק הקשר]
+5. **פורמט**: [בחן אם מוגדר פורמט תגובה]
+
+✨ הגרסה המשופרת:
+━━━━━━━━━━━━━━━━━━━━━━━
+
+אתה מומחה מקצועי ומנוסה בתחום [הוסף תחום ספציפי].
+
+🎯 הקשר ורקע:
+[הוסף הקשר רחב יותר למשימה]
+
+📋 המשימה המדויקת:
+${originalPrompt}
+
+🔧 דרישות ספציפיות:
+• סגנון: מקצועי ומדויק
+• אורך: [הגדר אורך רצוי]
+• פורמט: [ציין פורמט ברור]
+• קהל יעד: ${audience || 'כללי'}
+
+💡 הנחיות נוספות:
+━━━━━━━━━━━━━━━━━━━━━━
+• התמקד ב-${goal || 'איכות כללית'}
+• כלול דוגמאות מעשיות
+• ספק הסבר לכל החלטה
+• הציע אלטרנטיבות כשמתאים
+
+🚀 פורמט התגובה הרצוי:
+━━━━━━━━━━━━━━━━━━━━━━━━━━
+1. ניתוח המצב הנוכחי
+2. פתרון מפורט עם שלבים
+3. דוגמאות קונקרטיות
+4. המלצות ליישום
+5. דרכים למדידת הצלחה
+
+💬 נקודות חשובות נוספות:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━
+[הוסף כל דרישה או הגבלה ספציפית]
+
+התחל עם ניתוח המצב ופתח פתרון מקיף ומעשי.`;
 
             const improvements = [
-                '✅ נוספה הגדרת תפקיד מקצועי.',
-                '✅ נוצר מבנה ברור עם חלוקה להקשר, משימה והוראות.',
-                '✅ שולבו יעדי השיפור שהוגדרו (מטרה וקהל יעד).',
-                '✅ נוספה הנחיה להוספת הקשר ומבנה לתוצאה הסופית.'
+                '✅ הוספתי הגדרת תפקיד מקצועי למערכת',
+                '✅ יצרתי מבנה ברור עם כותרות וחלוקה',
+                '✅ הוספתי דרישות ספציפיות לפורמט התגובה',
+                '✅ כללתי הנחיות למתן דוגמאות ואלטרנטיבות',
+                `✅ התאמתי את הטון לקהל היעד (${audience || 'כללי'})`,
+                `✅ מיקדתי ב-${goal || 'איכות כללית'}`
             ];
 
             document.getElementById('optimizedOutput').textContent = optimizedPrompt;
             document.getElementById('improvementAnalysis').innerHTML = improvements.join('<br>');
             document.getElementById('optimizationResult').classList.remove('hidden');
-            navigator.clipboard.writeText(optimizedPrompt).then(() => {
-                showNotification('פרומפט משופר הועתק!', 'success');
-            });
+            
+            navigator.clipboard.writeText(optimizedPrompt);
+            showNotification('פרומפט שופר והועתק! ⚡', 'success');
         }
 
+        // ניתוח פרומפט
+        function analyzePrompt() {
+            const prompt = document.getElementById('promptToAnalyze').value.trim();
+            
+            if (!prompt) {
+                showNotification('אנא הכנס פרומפט לניתוח', 'warning');
+                return;
+            }
+
+            const scores = {
+                clarity: Math.floor(70 + Math.random() * 30),
+                structure: Math.floor(65 + Math.random() * 35),
+                specificity: Math.floor(60 + Math.random() * 40),
+                context: Math.floor(55 + Math.random() * 45),
+                efficiency: Math.floor(75 + Math.random() * 25)
+            };
+
+            const overallScore = Math.floor(Object.values(scores).reduce((a, b) => a + b) / 5);
+            
+            document.getElementById('overallScore').textContent = overallScore + '/100';
+
+            const ctx = document.getElementById('analysisChart').getContext('2d');
+            if (analysisChartInstance) {
+                analysisChartInstance.destroy();
+            }
+            
+            analysisChartInstance = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: ['בהירות', 'מבנה', 'ספציפיות', 'הקשר', 'יעילות'],
+                    datasets: [{
+                        label: 'ציון',
+                        data: Object.values(scores),
+                        backgroundColor: [
+                            'rgba(16, 185, 129, 0.8)',
+                            'rgba(59, 130, 246, 0.8)',
+                            'rgba(139, 92, 246, 0.8)',
+                            'rgba(245, 158, 11, 0.8)',
+                            'rgba(239, 68, 68, 0.8)'
+                        ],
+                        borderColor: [
+                            '#10b981', '#3b82f6', '#8b5cf6', '#f59e0b', '#ef4444'
+                        ],
+                        borderWidth: 2
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            labels: { color: 'white' }
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            max: 100,
+                            ticks: { color: 'white' },
+                            grid: { color: 'rgba(255,255,255,0.1)' }
+                        },
+                        x: {
+                            ticks: { color: 'white' },
+                            grid: { color: 'rgba(255,255,255,0.1)' }
+                        }
+                    }
+                }
+            });
+
+            const suggestions = [
+                '🎯 הוסף הגדרת תפקיד ברורה למערכת (למשל: "אתה מומחה ב...")',
+                '📋 הגדר פורמט תגובה ספציפי (רשימה, שלבים, מבנה)',
+                '🔍 הוסף יותר הקשר ופרטים רלוונטיים למשימה',
+                '⚡ ציין מגבלות או דרישות ספציפיות (אורך, סגנון, קהל יעד)',
+                '💡 בקש דוגמאות או הסברים להמחשת הפתרון',
+                '🎨 התאם את הטון והסגנון לקהל היעד'
+            ];
+
+            document.getElementById('detailedSuggestions').innerHTML = 
+                suggestions.map(s => `<div class="mb-2">${s}</div>`).join('');
+
+            document.getElementById('analysisResult').classList.remove('hidden');
+            showNotification('ניתוח פרומפט הושלם! 🔍', 'success');
+        }
+
+        // פונקציות עזר
         function copyPrompt() {
-            navigator.clipboard.writeText(document.getElementById('promptText').textContent).then(() => {
-                showNotification('פרומפט הועתק ללוח!', 'success');
+            const promptText = document.getElementById('promptText').textContent;
+            navigator.clipboard.writeText(promptText).then(() => {
+                showNotification('פרומפט הועתק ללוח! 📋', 'success');
             });
         }
 
+        function initiateOptimizationFromGenerator() {
+            const promptText = document.getElementById('promptText').textContent;
+            if (!promptText) {
+                showNotification('יש ליצור פרומפט תחילה', 'warning');
+                return;
+            }
+            
+            document.getElementById('originalPrompt').value = promptText;
+            showNotification('הפרומפט הועבר למעבדת השיפור', 'info');
+            document.getElementById('originalPrompt').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function browsePrompts() {
+            const communityContent = `🔍 פרומפטים פופולריים בקהילה:
+
+⭐ פרומפט שיווק AI (דירוג: 4.9/5)
+"אתה מומחה שיווק דיגיטלי המתמחה בשילוב AI בקמפיינים..."
+
+⭐ ניתוח נתונים מתקדם (דירוג: 4.8/5)
+"כאנליסט נתונים בכיר עם התמחות ב-Python ו-ML..."
+
+⭐ כתיבה יצירתית לתוכן (דירוג: 4.7/5)
+"ככותב תוכן יצירתי המתמחה בסיפורי מותג..."`;
+
+            document.getElementById('communityContent').textContent = communityContent;
+            document.getElementById('communityResult').classList.remove('hidden');
+            showNotification('פרומפטים פופולריים נטענו! 🌟', 'info');
+        }
+
+        function sharePrompt() {
+            showNotification('תכונת שיתוף פרומפטים תושק בקרוב! 🚀', 'info');
+        }
+
+        // גרפים ראשיים
+        function createDashboardCharts() {
+            const performanceCtx = document.getElementById('performanceChart').getContext('2d');
+            new Chart(performanceCtx, {
+                type: 'line',
+                data: {
+                    labels: ['ב', 'ג', 'ד', 'ה', 'ו', 'ש', 'א'],
+                    datasets: [{
+                        label: 'פרומפטים נוצרו',
+                        data: [120, 190, 170, 220, 180, 280, 310],
+                        borderColor: '#667eea',
+                        backgroundColor: 'rgba(102, 126, 234, 0.1)',
+                        tension: 0.4,
+                        fill: true
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            labels: { color: 'white' }
+                        }
+                    },
+                    scales: {
+                        y: {
+                            ticks: { color: 'white' },
+                            grid: { color: 'rgba(255,255,255,0.1)' }
+                        },
+                        x: {
+                            ticks: { color: 'white' },
+                            grid: { color: 'rgba(255,255,255,0.1)' }
+                        }
+                    }
+                }
+            });
+
+            const distributionCtx = document.getElementById('distributionChart').getContext('2d');
+            new Chart(distributionCtx, {
+                type: 'doughnut',
+                data: {
+                    labels: ['שיווק', 'טכני', 'יצירתי', 'עסקי', 'חינוכי'],
+                    datasets: [{
+                        data: [35, 25, 20, 15, 5],
+                        backgroundColor: [
+                            '#667eea',
+                            '#10b981',
+                            '#8b5cf6',
+                            '#f59e0b',
+                            '#ef4444'
+                        ]
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            labels: { color: 'white' }
+                        }
+                    }
+                }
+            });
+        }
+
+        // אתחול
         document.addEventListener('DOMContentLoaded', function() {
-            createGalaxy();
-            updateRealTimeStats();
-            setInterval(updateDynamicColors, 100);
-            showNotification('ברוכים הבאים למעבדה המתקדמת!', 'success', 4000);
+            createDashboardCharts();
+            showNotification('ברוכים הבאים למעבדת הפרומפטים! 🚀', 'success', 4000);
         });
     </script>
 </body>
